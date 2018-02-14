@@ -1,0 +1,10 @@
+<{% extends "base.html" %}
+
+{% block details %}
+	<form action="{% url 'update_form' restaurant_id=obj.id%}" method="POST">
+		{{update_form.as_p}}
+		{% csrf_token %}
+		<a href="{% url 'update_form' restaurant_id=obj.id%}"><input type="submit" name="update"> 
+		<a href="{% url 'delete' restaurant_id=obj.id%}"><input type="button" value="delete"></a>
+	</form>
+{% endblock details %}

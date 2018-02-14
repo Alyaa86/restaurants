@@ -20,5 +20,8 @@ from restaurants import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('restaurants/', views.list, name="restaurant_list"),
-    path('details/<int:y>/', views.detail, name="restaurant_detail")
+    path('details/<int:y>/', views.detail, name="restaurant_detail"),
+    path('restaurant_form/', views.create, name="restaurant_form"),
+    path('update_form/<int:restaurant_id>/', views.update, name="update_form"),
+    path('delete/<int:restaurant_id>/', views.delete, name="delete")
 ]

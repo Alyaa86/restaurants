@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block details %}
 	{% for restaurant in restaurants %}
 		<ul>
 			<a href="{% url 'restaurant_detail' y=restaurant.id %}"><li>Name: {{restaurant.name}}</li>
 			</a>
+			<li><a href="{% url 'update_form' restaurant_id=restaurant.id%}">update</a></li>
+			<li><a href="{% url 'delete' restaurant_id=restaurant.id%}">delete</a></li>
 		</ul>
 			{% endfor %}
-</body>
-</html>
+{% endblock details %}
+
+

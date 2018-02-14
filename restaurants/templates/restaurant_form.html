@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block details %}
+	<form action="{% url 'restaurant_form'%}" method="POST">
+		{{create_form.as_p}}
+		{% csrf_token %}
+		<input type="submit" name="create"> 
+	</form>
+{% endblock details %}

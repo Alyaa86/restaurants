@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block details %}
 		<ul>
 			<li>Name: {{x.name}}<li>
 			<li>Description: {{x.description}}<li>
@@ -11,5 +8,4 @@
 			<li>Closing Time: {{x.closing_time}}<li>	
 		</ul>
 			
-</body>
-</html>
+{% endblock details %}
