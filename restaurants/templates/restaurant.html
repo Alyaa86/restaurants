@@ -1,14 +1,39 @@
 {% extends "base.html" %}
 
 {% block details %}
-	{% for restaurant in restaurants %}
-		<ul>
-			<a href="{% url 'restaurant_detail' y=restaurant.id %}"><li>Name: {{restaurant.name}}</li>
-			</a>
-			<li><a href="{% url 'update_form' restaurant_id=restaurant.id%}">update</a></li>
-			<li><a href="{% url 'delete' restaurant_id=restaurant.id%}">delete</a></li>
-		</ul>
-			{% endfor %}
+	
+		<div class="container">
+			  <div class="row">
+				{% for restaurant in restaurants %}
+				    <div class="col-md-6">
+				    	<div class="card text-center">
+						  <div class="card-header">
+						    <ul class="nav nav-pills card-header-pills">
+						      <li class="nav-item">
+						        <a class="nav-link active" href="{% url 'update_form' restaurant_id=restaurant.id %}">Update</a>
+						      </li>
+						      <li class="nav-item">
+						        <a class="nav-link disabled" href="{% url 'delete' restaurant_id=restaurant.id %}">Delete</a>
+						      </li>
+						    </ul>
+						  </div>
+						  <div class="card-body">
+						    <h5 class="card-title">{{restaurant.name}}</h5>
+						    <a href="{% url 'restaurant_detail' y=restaurant.id%}" class="btn btn-primary">Details</a>
+						  </div>
+						</div>
+				    </div>
+				{% endfor %}
+			  </div>
+
+
+				  <div style='margin-top:60px' class="row">
+				    <div class="col-sm">
+						<a href="{% url 'restaurant_form'%}"><button type="button" class="btn btn-outline-secondary">Add Restaurant</button></a>
+				    </div>
+				  </div>
+		</div>
+
 {% endblock details %}
 
 

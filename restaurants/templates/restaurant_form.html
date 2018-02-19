@@ -1,9 +1,16 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block details %}
-	<form action="{% url 'restaurant_form'%}" method="POST">
-		{{create_form.as_p}}
-		{% csrf_token %}
-		<input type="submit" name="create"> 
-	</form>
+	<div class="container">
+	  <div class="row ">
+	    <div class="col-12">
+			<form action="{% url 'restaurant_form'%}" method="POST">
+				{{create_form|crispy}}
+				{% csrf_token %}
+				<input type="submit" name="create"> 
+			</form>
+		</div>
+	  </div>
+	</div>
 {% endblock details %}

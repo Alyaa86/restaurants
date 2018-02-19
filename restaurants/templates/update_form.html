@@ -1,10 +1,17 @@
-<{% extends "base.html" %}
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block details %}
-	<form action="{% url 'update_form' restaurant_id=obj.id%}" method="POST">
-		{{update_form.as_p}}
-		{% csrf_token %}
-		<a href="{% url 'update_form' restaurant_id=obj.id%}"><input type="submit" name="update"> 
-		<a href="{% url 'delete' restaurant_id=obj.id%}"><input type="button" value="delete"></a>
-	</form>
+<div class="container">
+  <div class="row ">
+    <div class="col-12">
+		<form action="{% url 'update_form' restaurant_id=obj.id%}" method="POST">
+			{% csrf_token %}
+			{{update_form|crispy}}
+			<a href="{% url 'update_form' restaurant_id=obj.id%}"><button type="button" class="btn btn-outline-secondary">update</button></a>
+			<a href="{% url 'delete' restaurant_id=obj.id%}"><button type="button" class="btn btn-outline-dark">delete</button></a>
+		</form>
+	</div>
+  </div>
+</div>
 {% endblock details %}

@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
 {% block details %}
-		<ul>
-			<li>Name: {{x.name}}<li>
-			<li>Description: {{x.description}}<li>
-			<li>Opening Time: {{x.opening_time}}<li>
-			<li>Closing Time: {{x.closing_time}}<li>	
-		</ul>
-			
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card bg-light mb-3">
+				    <h5 class="card-title">Name: {{x.name}}</h5>
+				    <p class="card-text">Description: {{x.description}}</p>
+				    <p class="card-text">Opening Time: {{x.opening_time}}</p>
+				    <p class="card-text">Closing Time: {{x.closing_time}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<a href="{% url 'update_form' restaurant_id=x.id %}"><button type="button" class="btn btn-outline-sucsess">update</button></a>
+			<a href="{% url 'delete' restaurant_id=x.id %}"><button type="button" class="btn btn-outline-dark">delete</button></a>
+		</div>
+	</div>
+</div>
 {% endblock details %}
+

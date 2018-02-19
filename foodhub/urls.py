@@ -25,3 +25,7 @@ urlpatterns = [
     path('update_form/<int:restaurant_id>/', views.update, name="update_form"),
     path('delete/<int:restaurant_id>/', views.delete, name="delete")
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

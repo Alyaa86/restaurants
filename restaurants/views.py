@@ -3,7 +3,7 @@ from .models import Restaurant
 from .forms import RestaurantForm
 
 # Create your views here.
-def list(requesti):
+def list(request):
 	context = {
 		'restaurants': Restaurant.objects.all(),
 	}
@@ -21,7 +21,8 @@ def create(request):
 	if request.method == "POST":
 		form = RestaurantForm(request.POST)
 		if form.is_valid():
-			form.save()
+			form.save(),
+			return redirect("restaurant_list")
 	context = {
 			'create_form': form
 		}
@@ -40,7 +41,9 @@ def update(request,restaurant_id):
 	}
 	return render (request, 'update_form.html', context)
 
-
+def delete(request, restaurant_id):
+	Restaurant.objects.get(id= restaurant_id).delete()
+	return redirect("restaurant_list")
 
 
 
