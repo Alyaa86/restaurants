@@ -10,7 +10,29 @@
 				    <p class="card-text">Description: {{x.description}}</p>
 				    <p class="card-text">Opening Time: {{x.opening_time}}</p>
 				    <p class="card-text">Closing Time: {{x.closing_time}}</p>
+				    <button type="button" class="btn btn-outline-dark" onclick="i_clicked({{x.id}})">
+						<span id="star-number">{{x.favourite_set.count}}</span>
+						<i id="star-color" class="fas fa-star {%if x in favourite_rest %}text-warning{%endif%}"></i>
+					</button>
+				    <p class="card-text">Image: {% if x.image %}
+				    		<img class="card-img-top" src="{{x.image.url}}" alt="Card image cap">
+				    	{% endif %}</p>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card">
+				{% for item in items %}
+				<div class="card bg-light mb-3">
+				    <h5 class="card-title">Name: {{item.name}}</h5>
+				    <p class="card-text">Description: {{item.description}}</p>
+				    <p class="card-text">Price: {{item.price}}</p>
+				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
@@ -24,5 +46,29 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function i_clicked(id)
+	{
+		$.ajax({
+			type:"GET",
+			url:"/favourite/"+id,
+			error:function(){
+				console.log("no, its not done yet!!")
+			},
+			success:function(data){
+				console.log(data);
+				$("#star-number").text(data.count)
+				if (data.action==="favourite") {
+					alert('You favourited this Restaurant');
+					$("#star-color").addClass("text-warning")
+				}
+				else{
+					$("#star-color").removeClass("text-warning")
+				}
+			},
+		})
+	}
+</script>
 {% endblock details %}
 

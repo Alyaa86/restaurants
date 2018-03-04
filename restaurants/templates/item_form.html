@@ -5,8 +5,8 @@
 	<div class="container">
 	  <div class="row ">
 	    <div class="col-12">
-			<form action="{% url 'restaurant_form'%}" method="POST" enctype="multipart/form-data">
-				{{create_form|crispy}}
+			<form action="{% url 'item_form' restaurant_id=obj.id%}" method="POST" enctype="multipart/form-data">
+				{{item_form|crispy}}
 				{% csrf_token %}
 				<input type="submit" name="create"> 
 			</form>

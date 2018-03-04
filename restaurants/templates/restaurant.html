@@ -1,30 +1,33 @@
 {% extends "base.html" %}
 
 {% block details %}
-	
 		<div class="container">
 			  <div class="row">
+			  	
 				{% for restaurant in restaurants %}
-				    <div class="col-md-6">
-				    	<div class="card text-center">
-						  <div class="card-header">
-						    <ul class="nav nav-pills card-header-pills">
-						      <li class="nav-item">
-						        <a class="nav-link active" href="{% url 'update_form' restaurant_id=restaurant.id %}">Update</a>
-						      </li>
-						      <li class="nav-item">
-						        <a class="nav-link disabled" href="{% url 'delete' restaurant_id=restaurant.id %}">Delete</a>
-						      </li>
-						    </ul>
-						  </div>
-						  <div class="card-body">
-						    <h5 class="card-title">{{restaurant.name}}</h5>
-						    <a href="{% url 'restaurant_detail' y=restaurant.id%}" class="btn btn-primary">Details</a>
-						  </div>
-						</div>
-				    </div>
-				{% endfor %}
-			  </div>
+					<div class="col-md-6" style='margin-top:30px'>
+					    {% if restaurant.image %}
+					    	<img class="card-img-top" src="{{restaurant.image.url}}" alt="Card image cap">
+					    {% endif %}
+					    	<div class="card text-center">
+							  <div class="card-header">
+							    <ul class="nav nav-pills card-header-pills">
+							      <li class="nav-item">
+							        <a class="nav-link active" href="{% url 'update_form' restaurant_id=restaurant.id %}">Update</a>
+							      </li>
+							      <li class="nav-item">
+							        <a class="nav-link disabled" href="{% url 'delete' restaurant_id=restaurant.id %}">Delete</a>
+							      </li>
+							    </ul>
+							  </div>
+							  <div class="card-body">
+							    <h5 class="card-title">{{restaurant.name}}</h5>
+							    <a href="{% url 'restaurant_detail' y=restaurant.id%}" class="btn btn-primary">Details</a>
+							  </div>
+							</div>
+						</div> 
+					{% endfor %}
+				  </div>
 
 
 				  <div style='margin-top:60px' class="row">
